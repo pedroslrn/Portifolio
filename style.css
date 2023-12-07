@@ -1,0 +1,335 @@
+:root {
+    --main-color: #20b2aa;
+    --color-texto: #ffffff;
+    --back-preto: #000;
+    --back-roxo: #1a1a3e;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+body{
+    background-color: var(--back-preto);
+}
+
+.interface{
+    padding: 1% 10%;
+}
+
+.flex{
+    display:flex;
+    align-items: center;
+
+}
+.nav{
+    display: flex;
+}
+/*------------------------------------------------navBar-------------------------------------------------------*/
+
+header > .interface{
+    display: flex;
+    align-items: center;;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 100;
+    width: 100%; /* Certifique-se de que a largura é 100% */
+    background-color: var(--back-preto);
+}
+header a{ 
+    color:rgb(169, 169, 169);
+    text-decoration: none;
+    height: auto;
+    /*Animação do mouse*/
+    display: inline-block;
+    transition: .2s;
+}
+header nav ul{
+    list-style-type: none;
+}
+header nav ul li{
+    display: inline-block;
+    padding: 0 20px;
+    transition: .5s;
+}
+.logo img {
+    width: 35px; 
+    height: auto; 
+    margin-left: 10%;
+}
+/*Animação do mouse*/
+header a:hover{
+    color: var(--color-texto);
+    transform: scale(1.1);
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+/*------------------------------------------------textoInicial-------------------------------------------------------*/
+#inicio .flex {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+#inicio .texto-inicio {
+    padding: 1% 1%;
+    color: var(--color-texto);
+    max-width: 60%;
+    width: 70%;
+    background-color: var(--back-roxo);
+    border-radius: 30px;
+}
+#inicio .caixaI{
+    display: flex;
+}
+#inicio .caixaI .engenharia{
+    opacity: .9;
+    background-color: var(--back-roxo);
+    padding: 0% .5%;
+    margin: 0% .5%;
+
+}
+#l1{
+    opacity: 0.6;
+    font-size: 1.6rem;
+}
+#l2{
+    color: var(--color-texto);
+    font-weight: 725;
+    font-size: 3rem;
+    
+}
+#l4{
+    
+    font-weight: 200;
+    font-size: 1.8rem;  
+}
+#l4 samp{
+    color: var(--main-color);
+    font-size: 1.8rem; 
+    font-weight: 900;
+}
+
+.imagem-inicio{
+    width: 300px;
+    height: 400px;
+    background-color: var(--back-roxo);
+    background-image: url(imagens/Clipped_image_20231205_131819.png);
+    background-size:cover;
+    background-position: 1%;
+    position: relative;
+    border-radius: 30px;
+}
+/*------------------------------------------------Sobre Mim-------------------------------------------------------*/
+#sobre-mim{
+    display: flex;
+    height: 100vh;
+    background-color: var(--back-roxo);
+    align-items: center;
+    justify-content: space-around;
+}
+#sobre-mim .caixa{
+    padding: 3% 10%;
+    background-color: var(--back-preto);
+    border-radius: 30px;
+    align-items: center;
+    justify-content: space-around;
+}
+#sobre-mim .texto-sobre{
+    align-items: center;
+    justify-content: space-around;
+    margin: 2% 4%;
+    color: var(--color-texto);
+}
+#sobre-mim .texto-sobre p{
+    margin: 2% 0;
+    text-align: justify;
+
+}
+#sobre-mim .texto-sobre h1 span{
+    font-size: 30px;
+    color: var(--main-color);
+}
+
+/*------------------------------------------------projetos-------------------------------------------------------*/
+#projetos{
+    height: 100vh;
+    text-align: center;
+}
+#projetos .interface .caixa1 {
+    margin-top: 150px; 
+}
+#projetos .caixa2{
+    display: flex;
+    justify-content: center;
+}
+#projetos .meus{
+    padding: 0 1%;
+    color: var(--color-texto);
+    background-color: var(--back-preto);
+    margin-right: .5%;
+    border-radius: 10px;
+
+
+}
+#projetos .projetos{ 
+    color: var(--color-texto);
+}
+#projetos .caixa1{
+    padding: 3% 0;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--back-roxo);
+
+}
+.subtitulo{
+    color: var(--color-texto);
+}
+#projetos .flex{
+    justify-content: space-around;
+    margin-top: 2%;
+}
+.imagen-projetos1{
+    width: 300px;
+    height: 400px;
+    background-image: url(imagens/Apc2.png);
+    background-size:cover;
+    background-position: 50%;
+    position: relative;
+    border-radius: 30px;
+}
+.imagen-projetos2{
+    width: 300px;
+    height: 400px;
+    background-image: url(imagens/OO2.png);
+    background-size:cover;
+    position: relative;
+    border-radius: 30px;
+}
+.imagen-projetos3{
+    width: 300px;
+    height: 400px;
+    background-image: url(imagens/Sa.png);
+    background-size:cover;
+    background-position: 50%;
+    position: relative;
+    border-radius: 30px;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    background-color: #000000d8;
+    color: var(--color-texto);
+    opacity: 0;
+    transition: .5s;
+    border-radius: 30px;
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+#p1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: auto;
+}
+
+#p2 {
+    color: var(--color-texto);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+#p3 a{
+    color: var(--color-textoo);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: auto;
+    
+}
+.descricao{
+    padding: 1% 1%;
+    width: 90%;
+    border-radius: 20px;
+    
+}
+.ferramentas{
+    width: 40%;
+    border-radius: 30px;
+    opacity: .7;
+}
+
+
+
+
+
+/*------------------------------------------------rodape-------------------------------------------------------*/
+
+.emote-rodape img{
+    width: 100px; 
+    height: auto;
+}
+.rodape .btn-redeSociais button{
+    width: 50px;
+    height: 50px;
+    margin: 0 6px;
+    border-radius: 50%;
+    border: 0;
+    font-size: 30px;
+    background-color: var(--main-color);
+    cursor: pointer;
+}
+footer .flex{
+    justify-content: space-between;
+}
+footer .rodape{
+    padding: 20px 0;
+}
+footer .rodape p i{
+    color: var(--main-color);
+}
+footer .rodape p a{
+    margin-left: 4px;
+    color: var(--color-texto);
+}
+.rodape .btn-redeSociais button i.fab.fa-github{
+    color: var(--back-preto);
+}
+.rodape .btn-redeSociais button i.fab.fa-linkedin-in{
+    color: var(--back-preto);
+}
+
+.borda{
+    border-top: 2px solid var(--main-color);
+}
+
+@media screen and (max-width:1200px) {
+    .flex{
+        flex-direction: column;
+        gap: 50px;
+    }
+    .interface{
+        padding: 4% 10% ;
+    }
+    section{
+        padding: 10%;
+    }
+}
