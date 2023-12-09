@@ -342,12 +342,12 @@ footer .rodape p a{
         padding: 3% 3%;
     }
 
-    #inicio .imagemInicio{
-        margin-top: 5%;
+    #sobreMim {
+       height: 130vh;
     }
 
     #sobreMim .interface{
-        padding: 2% 10%;
+        padding: 15% 10%;
     }
 
     #projetos .interface{
