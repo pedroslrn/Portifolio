@@ -12,7 +12,10 @@
     font-family: 'Titillium Web', sans-serif;
 }
 body{
-    background-color: var(--back-black);
+    background: radial-gradient(circle at center, #0a0a20, #000);
+    
+    height: 100%;
+    overflow-x: hidden
 }
 
 .interface{
@@ -86,7 +89,7 @@ html {
     color: var(--color-text);
     max-width: 60%;
     width: 70%;
-    background-color: var(--back-blue);
+    background-color: var(--back-black);
     border-radius: 32px;
 }
 
@@ -127,7 +130,7 @@ html {
 #sobreMim{
     display: flex;
     height: 100vh;
-    background-color: var(--back-blue);
+    /*background-color: var(--back-black);*/
     align-items: center;
     justify-content: space-around;
 }
@@ -159,62 +162,82 @@ html {
 }
 
 /*------------------------------------------------projetos-------------------------------------------------------*/
+/* ===== Seção Projetos ===== */
 #projetos {
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--back-black);
+  position: relative;
 }
 
-#projetos .interface .caixa1 {
-    margin-top: 9%;
+/* remove o padding interno da interface nesta seção */
+#projetos > .interface {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#projetos .caixa2 {
-    display: flex;
-    justify-content: center;
-}
-
-#projetos .meus {
-    padding: 0 1%;
-    color: var(--color-text);
-    background-color: var(--back-black);
-    margin-right: .5%;
-    border-radius: 10px;
-}
-
-#projetos .projetos {
-    color: var(--color-text);
-}
-
+/* caixa principal centralizada */
 #projetos .caixa1 {
-    padding: 3% 0;
-    border-radius: 32px;
-    align-items: center;
-    justify-content: space-around;
-    background-color: var(--back-blue);
+  width: 80%;
+  max-width: 1200px;
+  height: 70vh;
+  background-color: var(--back-blue);
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  overflow: hidden;
 }
 
-.subtitulo {
+/* container interno com scroll horizontal */
+#projetos .flex {
+  display: flex;
+  flex-wrap: nowrap;           /* impede quebra de linha */
+  overflow-x: auto;            /* força rolagem horizontal */
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  gap: 1.2rem;
+  scroll-behavior: smooth;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* oculta a barra de rolagem */
+#projetos .flex::-webkit-scrollbar { display: none; }
+#projetos .flex { scrollbar-width: none; }
+
+/* define tamanho dos projetos */
+.imgProj {
+  width: 320px;
+  height: 420px;
+  flex: 0 0 auto;              /* impede encolhimento */
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+.imgProj:hover {
+  transform: scale(1.05);
+}
+
+#projetos .meus{
     color: var(--color-text);
 }
-
-#projetos .flex {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
-    overflow-x: auto; /* Habilita rolagem horizontal apenas para .flex */
-    padding: 1rem;
-    scroll-behavior: smooth;
-}
-
-.imgProj {
-    width: 300px;
-    height: 400px;
-    background-size: cover;
-    background-position: 50%;
-    position: relative;
-    border-radius: 32px;
-    flex-shrink: 0;
-    overflow: hidden;
-    margin: 0 1rem;
+#projetos .projetos{
+    color: var(--main-color);
 }
 
 .imagenProjetos0 {
@@ -236,7 +259,12 @@ html {
 .imagenProjetos4 {
     background-image: url(imagens/jogoDaVelha.jpeg);
 }
-
+.imagenProjetos5 {
+    background-image: url(imagens/mds.jpg);
+}
+.imagenProjetos6 {
+    background-image: url(imagens/gabarito.jpg);
+}
 .overlay {
     position: absolute;
     top: 0;
@@ -381,4 +409,84 @@ footer .rodape p a{
     #projetos .interface{
         padding: 15%;
     }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.revealed {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+body {
+  background: radial-gradient(circle at center, #1a1a3e, #000);
+  transition: background 0.2s ease;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+
+/* ===== Flex (container dos projetos) - scrollbar visível e estilizada ===== */
+#projetos .flex {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;     /* permite rolagem horizontal */
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  gap: 1.2rem;
+  padding: 1rem;
+  padding-bottom: 22px; /* deixa espaço para a barra de rolagem */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===== WebKit (Chrome, Edge, Safari) ===== */
+#projetos .flex::-webkit-scrollbar {
+  height: 12px;                 /* altura da barra horizontal */
+}
+
+#projetos .flex::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  margin: 3px 0;                /* espaço entre track e bordas da div */
+}
+
+#projetos .flex::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(32,178,170,0.9), rgba(26,26,62,0.9));
+  border-radius: 10px;
+  border: 2px solid rgba(0,0,0,0.15);
+  min-width: 30px;
+}
+
+/* Thumb hover */
+#projetos .flex::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.05);
+}
+
+/* ===== Firefox ===== */
+#projetos .flex {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(32,178,170,0.9) rgba(255,255,255,0.04);
+}
+
+/* opcional: deixa o contêiner com fundo levemente translúcido onde a scrollbar fica */
+#projetos .flex::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
 }
