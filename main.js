@@ -81,3 +81,28 @@ if (container) {
   container.addEventListener('pointercancel', pointerUpEnd);
   container.addEventListener('pointerleave', pointerUpEnd);
 }
+
+// ===== Scroll interno natural e clicável =====
+const caixaProjetos = document.querySelector("#projetos .caixa1");
+const projetosContainer = document.querySelector(".projects-container");
+
+if (caixaProjetos && projetosContainer) {
+  let dentroDaCaixa = false;
+
+  // Detecta se o mouse está dentro da área
+  caixaProjetos.addEventListener("mouseenter", () => dentroDaCaixa = true);
+  caixaProjetos.addEventListener("mouseleave", () => dentroDaCaixa = false);
+
+  window.addEventListener("wheel", (e) => {
+    // Se o mouse está dentro da caixa E o usuário não está tentando clicar
+    if (dentroDaCaixa && !e.target.closest("a")) {
+      // Permite cliques nos links e evita travar o evento
+      e.preventDefault();
+
+      // Ajuste de velocidade de rolagem
+      projetosContainer.scrollTop += e.deltaY * 5;
+    }
+  }, { passive: false });
+}
+
+

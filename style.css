@@ -181,6 +181,17 @@ html {
   justify-content: center;
 }
 
+#projetos .caixa2 {
+    display: flex;
+    justify-content: center;
+    color: var(--color-text);
+}
+
+#projetos .titulo h1 span{
+    font-size: 32px;
+    color: var(--main-color);
+}
+
 /* caixa principal centralizada */
 #projetos .caixa1 {
   width: 80%;
@@ -212,85 +223,135 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
-/* oculta a barra de rolagem */
-#projetos .flex::-webkit-scrollbar { display: none; }
-#projetos .flex { scrollbar-width: none; }
+/* ===== Layout horizontal dos projetos ===== */
+/* ===== Container com rolagem ===== */
+.projects-container {
+  width: 100%;
+  height: 70vh; /* altura visível — pode ajustar conforme desejar */
+  overflow-y: auto; /* ativa rolagem vertical */
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-/* define tamanho dos projetos */
-.imgProj {
-  width: 320px;
-  height: 420px;
-  flex: 0 0 auto;              /* impede encolhimento */
+/* Barra de rolagem estilizada (funciona em navegadores baseados em WebKit e Firefox moderno) */
+.projects-container::-webkit-scrollbar {
+  width: 10px;
+}
+.projects-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+}
+.projects-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.projects-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;           /* permite quebrar linha em telas pequenas */
+  justify-content: center;   /* centraliza horizontalmente */
+  align-items: flex-start;
+  gap: 2.5rem;               /* espaçamento entre os blocos */
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Cada projeto (imagem + descrição lado a lado) */
+.project-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
   border-radius: 20px;
-  background-size: cover;
-  background-position: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  width: 48%;                /* dois projetos lado a lado */
+  max-width: 700px;
+  min-width: 400px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+/* Imagem do projeto */
+.proj-photo {
+  flex: 0 0 220px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #111;
+}
+.proj-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Descrição do projeto */
+.proj-desc {
+  flex: 1;
+  color: var(--color-text);
+}
+.proj-desc h3 {
+  margin-bottom: .5rem;
+  color: var(--main-color);
+  font-size: 1.3rem;
+}
+.proj-desc p {
+  font-size: .95rem;
+  line-height: 1.4;
+  text-align: justify;
+}
+.proj-desc .tools {
+  margin-top: .4rem;
+  font-size: .9rem;
+  opacity: .85;
+}
+.proj-desc a {
+  margin-top: .6rem;
+  color: var(--color-text);
+  text-decoration: underline;
+  font-weight: 600;
+  display: inline-block;
+}
+.proj-desc a {
   position: relative;
-  scroll-snap-align: start;
-  transition: transform 0.3s ease;
+  z-index: 5; /* garante prioridade de clique */
+  pointer-events: auto;
+}
+.projects-container,
+.caixa1 {
+  pointer-events: auto;
 }
 
-.imgProj:hover {
-  transform: scale(1.05);
-}
 
-#projetos .meus{
-    color: var(--color-text);
-}
-#projetos .projetos{
-    color: var(--main-color);
-}
-
-.imagenProjetos0 {
-    background-image: url(imagens/brisa.png);
-}
-
-.imagenProjetos1 {
-    background-image: url(imagens/Apc2.png);
-}
-
-.imagenProjetos2 {
-    background-image: url(imagens/OO2.png);
-    background-position: 8%;
-}
-
-.imagenProjetos3 {
-    background-image: url(imagens/Sa.png);
-}
-.imagenProjetos4 {
-    background-image: url(imagens/jogoDaVelha.jpeg);
-}
-.imagenProjetos5 {
-    background-image: url(imagens/mds.jpg);
-}
-.imagenProjetos6 {
-    background-image: url(imagens/gabarito.jpg);
-}
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+/* ===== Responsividade ===== */
+@media (max-width: 950px) {
+  .projects-grid {
+    flex-direction: column;  /* empilha os projetos no mobile */
     align-items: center;
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: var(--color-text);
-    opacity: 0;
-    transition: opacity 0.5s;
-    border-radius: 32px;
-    padding: 1rem;
-    box-sizing: border-box;
-    text-align: center; /* Centraliza o texto horizontalmente */
-    overflow: auto; /* Permite rolagem interna se o conteúdo exceder a altura */
-    word-wrap: break-word; /* Permite quebrar palavras */
-    hyphens: auto; /* Adiciona hifens para quebra de palavras */
+  }
+
+  .project-item {
+    width: 90%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .proj-photo {
+    width: 100%;
+    height: 220px;
+  }
 }
 
-.imgProj:hover .overlay {
-    opacity: 1;
-}
+
 
 #p1, #p2, #p3 {
     margin: 0;
