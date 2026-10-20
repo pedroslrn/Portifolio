@@ -551,3 +551,63 @@ body {
   position: absolute;
   pointer-events: none;
 }
+
+/* Navegação com acesso à apresentação. */
+@media (max-width: 760px) {
+  header > .interface.nav { padding: 12px 4%; gap: 16px; }
+  header .nav > .flex { min-width: 0; }
+  header .navb ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 14px; }
+  header .navb ul li { padding: 0; font-size: .9rem; }
+  header .logo { flex-shrink: 0; }
+}
+
+/* Layout fluido para celulares, tablets e computadores. */
+html { scroll-padding-top: 110px; }
+body { overflow-wrap: break-word; }
+.interface { width: 100%; max-width: 1440px; margin-inline: auto; padding: 24px clamp(20px, 6vw, 88px); }
+header > .interface.nav { max-width: none; top: 0; padding: 12px clamp(16px, 5vw, 72px); gap: 20px; }
+header .navb ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 20px; }
+header .navb ul li { padding: 0; }
+header nav a { padding-block: 10px; }
+header .logo { flex-shrink: 0; }
+header .nav > .flex { min-width: 0; }
+#inicio .flex { min-height: 100svh; height: auto; margin-top: 0; padding-block: 110px 48px; gap: 40px; flex-wrap: nowrap; }
+#inicio .textoInicio { width: auto; max-width: none; flex: 1; min-width: 0; padding: 24px; }
+#inicio .textoInicio #l1 { font-size: clamp(1.15rem, 2vw, 1.6rem); }
+#inicio .textoInicio #l2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
+#inicio .textoInicio #l4, #inicio .textoInicio #l4 samp { font-size: clamp(1.2rem, 2.2vw, 1.8rem); }
+.imagemInicio { width: min(300px, 100%); height: auto; aspect-ratio: 3 / 4; flex-shrink: 0; }
+#sobreMim { height: auto; min-height: 80svh; padding-block: 48px; }
+#sobreMim .interface { padding: 24px clamp(20px, 6vw, 88px); }
+#sobreMim .caixa { margin-top: 0; padding: clamp(24px, 5vw, 64px); }
+#sobreMim .textoSobreMim { margin: 0; }
+#sobreMim .textoSobreMim p { text-align: left; line-height: 1.7; margin-block: 20px; }
+#projetos { height: auto; padding-block: 64px; }
+#projetos > .interface { padding: 0 clamp(16px, 4vw, 64px); }
+#projetos .caixa1 { width: 100%; height: auto; max-width: 1280px; padding: clamp(16px, 3vw, 36px); overflow: visible; }
+#projetos .titulo { text-align: center; }
+#projetos .flex { display: block; height: auto; padding: 0; overflow: visible; scroll-snap-type: none; }
+#projetos .flex::after { content: none; }
+.projects-container { height: auto; padding: 0; overflow: visible; }
+.projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 28px 0 0; }
+.project-item { width: 100%; min-width: 0; max-width: none; height: 100%; flex-direction: column; align-items: stretch; padding: clamp(16px, 2vw, 24px); }
+.proj-photo { flex: none; width: 100%; height: auto; aspect-ratio: 16 / 10; }
+.proj-desc { min-width: 0; }
+.proj-desc p { text-align: left; line-height: 1.6; }
+.proj-desc a { padding-block: 10px; }
+footer .flex { gap: 24px; flex-wrap: wrap; }
+footer .rodape p a { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  #inicio .flex { flex-direction: column; padding-top: 112px; gap: 32px; }
+  #inicio .textoInicio { width: 100%; }
+  #inicio .textoInicio p { padding: 0; }
+  #sobreMim { min-height: 0; padding-block: 24px; }
+  .projects-grid { grid-template-columns: minmax(0, 1fr); }
+  .project-item { text-align: left; }
+  header .navb ul { gap: 0 14px; }
+  header .navb a { font-size: .9rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

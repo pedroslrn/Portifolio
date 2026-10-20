@@ -1,4 +1,5 @@
 // ===== ScrollReveal Animações =====
+if (typeof ScrollReveal === 'function' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 const sr = ScrollReveal({
   reset: true,      // as animações reiniciam ao voltar
   distance: '50px',
@@ -21,6 +22,8 @@ sr.reveal('.reveal', {
 });
 
 
+}
+
 // ===== Efeito de gradiente sutil que segue o mouse (somente na seção #inicio) =====
 const inicio = document.querySelector('#inicio');
 if (inicio) {
@@ -38,71 +41,6 @@ if (inicio) {
       radial-gradient(circle at ${x * 100}% ${y * 100}%, ${color1}, ${color2}, #000)
     `;
   });
-}
-
-
-// ===== Rolagem horizontal dos projetos =====
-const container = document.querySelector("#projetos .flex");
-
-if (container) {
-  // Scroll com o mouse (wheel → horizontal)
-  container.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    container.scrollLeft += e.deltaY * 1.2; // ajuste de sensibilidade
-  }, { passive: false });
-
-  // Suporte a arrastar com o mouse (drag-to-scroll)
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  container.addEventListener('pointerdown', (e) => {
-    isDown = true;
-    container.style.cursor = 'grabbing';
-    startX = e.clientX;
-    scrollLeft = container.scrollLeft;
-    container.setPointerCapture(e.pointerId);
-  });
-
-  container.addEventListener('pointermove', (e) => {
-    if (!isDown) return;
-    const x = e.clientX;
-    const walk = (startX - x); // fator de deslocamento
-    container.scrollLeft = scrollLeft + walk;
-  });
-
-  const pointerUpEnd = (e) => {
-    isDown = false;
-    container.style.cursor = 'default';
-    try { container.releasePointerCapture(e.pointerId); } catch (_) {}
-  };
-
-  container.addEventListener('pointerup', pointerUpEnd);
-  container.addEventListener('pointercancel', pointerUpEnd);
-  container.addEventListener('pointerleave', pointerUpEnd);
-}
-
-// ===== Scroll interno natural e clicável =====
-const caixaProjetos = document.querySelector("#projetos .caixa1");
-const projetosContainer = document.querySelector(".projects-container");
-
-if (caixaProjetos && projetosContainer) {
-  let dentroDaCaixa = false;
-
-  // Detecta se o mouse está dentro da área
-  caixaProjetos.addEventListener("mouseenter", () => dentroDaCaixa = true);
-  caixaProjetos.addEventListener("mouseleave", () => dentroDaCaixa = false);
-
-  window.addEventListener("wheel", (e) => {
-    // Se o mouse está dentro da caixa E o usuário não está tentando clicar
-    if (dentroDaCaixa && !e.target.closest("a")) {
-      // Permite cliques nos links e evita travar o evento
-      e.preventDefault();
-
-      // Ajuste de velocidade de rolagem
-      projetosContainer.scrollTop += e.deltaY * 5;
-    }
-  }, { passive: false });
 }
 
 
