@@ -96,3 +96,11 @@
   margin: 40px 0 18px;
   max-width: none;
 }
+
+/* Introdução sem fotografia. */
+.presentation .hero { grid-template-columns: minmax(0, 1fr); }
+.presentation .hero > div { max-width: 800px; }
+
+/* Centralização da apresentação pessoal. */
+.presentation .hero > div { width: 100%; margin-inline: auto; text-align: center; }
+.presentation .hero p { margin-inline: auto; }
